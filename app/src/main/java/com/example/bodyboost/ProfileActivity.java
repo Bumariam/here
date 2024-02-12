@@ -79,14 +79,7 @@ public class ProfileActivity extends AppCompatActivity {
         tvName = findViewById(R.id.tv_name);
         tvEmail = findViewById(R.id.tv_email1);
 
-        Button btnLogout = findViewById(R.id.btn_logOut);
 
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                LogoutUser();
-            }
-        });
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference reference = database.getReference("users").child(currentUser.getUid());
@@ -132,12 +125,6 @@ public class ProfileActivity extends AppCompatActivity {
 
 
 
-    private void LogoutUser() {
-        FirebaseAuth.getInstance().signOut();
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-        finish();
-    }
 
     private void setupMenuNavigation() {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);

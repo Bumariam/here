@@ -5,11 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LogoutActivity">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_logOut"
+        style="@style/ButtonGreen"
+        android:layout_width="161dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="48dp"
         android:text="logout"
-        android:textSize="23sp"
-        android:textColor="@color/black"/>
+        android:textColor="@color/primary_color"
+        app:layout_constraintBottom_toTopOf="@+id/ill_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
