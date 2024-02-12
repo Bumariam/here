@@ -90,6 +90,10 @@ public class FitActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        Menu menu = bottomNavigationView.getMenu();
+        MenuItem menuItem = menu.findItem(R.id.fit);
+        menuItem.setChecked(true);
     }
 
 

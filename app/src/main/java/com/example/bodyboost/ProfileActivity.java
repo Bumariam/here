@@ -162,5 +162,10 @@ public class ProfileActivity extends AppCompatActivity {
                 return false;
             }
         });
+        // Установим элемент "profile" как выбранный
+        Menu menu = bottomNavigationView.getMenu();
+        MenuItem menuItem = menu.findItem(R.id.profile);
+        menuItem.setChecked(true);
+
     }
 }
