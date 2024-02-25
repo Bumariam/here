@@ -24,35 +24,25 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    TextView tvName, tvEmail;
+    TextView tvName, tvWaterAmount, tvEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
         setupMenuNavigation();
 
+        tvName = findViewById(R.id.tv_name);
+        tvEmail = findViewById(R.id.tv_email1);
+        tvWaterAmount = findViewById(R.id.water_prof);
 
-
-
-
-        // Получаем экземпляр разделяемого класса
-        SharedData sharedData = SharedData.getInstance();
-
-        // Получаем значение totalCalories из разделяемого класса
-        int totalCaloriesValue = sharedData.getTotalCalories();
-
-        // Находим элемент food_prof и устанавливаем полученное значение
-        TextView foodProfTextView = findViewById(R.id.food_prof);
-        foodProfTextView.setText(totalCaloriesValue + " ");
+        // Остальной код здесь...
 
         // Получаем сохраненное значение consumedWater из SharedPreferences
-        SharedPreferences preferences = getSharedPreferences("tracking", MODE_PRIVATE);
-        int consumedWater = preferences.getInt("consumedWater", 0);
-
-        // Находим элемент water_prof и устанавливаем полученное значение
-        TextView waterProfTextView = findViewById(R.id.water_prof);
-        waterProfTextView.setText(consumedWater + " ");
+        SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        int tvConsumedWater = preferences.getInt("water_amount", 0);
+        tvWaterAmount.setText(tvConsumedWater + " ml");
 
         // Получаем сохраненное значение previousSleepDuration из SharedPreferences
         String previousSleepDuration = preferences.getString("previousSleepDuration", "");

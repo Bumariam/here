@@ -192,13 +192,8 @@
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.88"/>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/roboto_bold"
-                            android:text="@string/ml_prof"
-                            android:textColor="@color/grey"
-                            android:textSize="12sp" />
+
+
                     </LinearLayout>
 
                 </LinearLayout>
@@ -316,7 +311,6 @@
         app:layout_constraintBottom_toTopOf="@+id/ill_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_logOut"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/img" />
 
