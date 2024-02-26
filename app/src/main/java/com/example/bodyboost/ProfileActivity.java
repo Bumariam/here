@@ -37,7 +37,16 @@ public class ProfileActivity extends AppCompatActivity {
         tvEmail = findViewById(R.id.tv_email1);
         tvWaterAmount = findViewById(R.id.water_prof);
 
-        // Остальной код здесь...
+        SharedData sharedData = SharedData.getInstance();
+
+        // Получаем значение totalCalories из разделяемого класса
+        int totalCaloriesValue = sharedData.getTotalCalories();
+
+        // Находим элемент food_prof и устанавливаем полученное значение
+        TextView foodProfTextView = findViewById(R.id.food_prof);
+        foodProfTextView.setText(totalCaloriesValue + " ");
+
+
 
         // Получаем сохраненное значение consumedWater из SharedPreferences
         SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);

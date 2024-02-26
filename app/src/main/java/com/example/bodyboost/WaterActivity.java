@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
@@ -15,12 +17,12 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.Calendar;
 
-
 public class WaterActivity extends AppCompatActivity {
 
     private static final String WATER_AMOUNT_KEY = "water_amount";
-    private int dailyGoal = 2000;
+    private static final int DAILY_GOAL = 2000; // Дневная цель потребления воды (в мл)
     private SharedPreferences sharedPreferences;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,17 +30,12 @@ public class WaterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_water);
 
         sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        progressBar = findViewById(R.id.progressBar);
 
-        int tvConsumedWater = sharedPreferences.getInt(WATER_AMOUNT_KEY, 0);
+        int consumedWaterAmount = sharedPreferences.getInt(WATER_AMOUNT_KEY, 0);
+        updateUI(consumedWaterAmount);
 
-        TextView textViewPercentage = findViewById(R.id.textViewPercentage);
-        TextView textViewAmount = findViewById(R.id.tvConsumedWater);
-        TextView textViewDailyGoal = findViewById(R.id.textViewDailyGoal);
-        Button buttonAddWater = findViewById(R.id.buttonAddWater);
-
-        textViewDailyGoal.setText("Daily Goal: " + dailyGoal + "ml");
-        updateUI(tvConsumedWater);
-
+        ImageView buttonAddWater = findViewById(R.id.buttonAddWater);
         buttonAddWater.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,7 +72,7 @@ public class WaterActivity extends AppCompatActivity {
     }
 
     private void updateUI(int waterAmount) {
-        int percentage = (int) ((waterAmount / (float) dailyGoal) * 100);
+        int percentage = (int) ((waterAmount / (float) DAILY_GOAL) * 100);
 
         TextView textViewPercentage = findViewById(R.id.textViewPercentage);
         TextView textViewAmount = findViewById(R.id.tvConsumedWater);
@@ -86,5 +83,8 @@ public class WaterActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt(WATER_AMOUNT_KEY, waterAmount);
         editor.apply();
+
+        // Обновление прогресса ProgressBar
+        progressBar.setProgress(percentage);
     }
 }
