@@ -33,7 +33,7 @@ public class MainActivity2 extends AppCompatActivity {
 
     private ProgressBar progressBar;
 
-    private static final String kcal = "kcal🔥";
+    private static final String kcal = "kcal";
     private int kcalDailyGoal;
 
     private ActivityResultLauncher<Intent> settingsResultLauncher;

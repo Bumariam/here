@@ -6,12 +6,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProgressActivity"
-    android:background="@color/primary_color">
+    android:background="@color/bg">
+
+
+    <TextView
+        android:id="@+id/calorieHeader"
+        android:layout_width="346dp"
+        android:layout_height="59dp"
+        android:fontFamily="@font/montserratregular"
+        android:text="Statistic for 7 days"
+        android:textColor="#FFFFFF"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.434" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="413dp"
-        android:layout_height="374dp"
+        android:layout_width="412dp"
+        android:layout_height="405dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -41,7 +58,8 @@
             android:layout_weight="1"
             android:rotation="270"
             android:scaleX="5"
-            android:scaleY="9" />
+            android:scaleY="9"
+            android:progressTint="@color/bg"/>
 
         <ProgressBar
             android:id="@+id/progressBar2"
@@ -51,7 +69,8 @@
             android:layout_weight="1"
             android:rotation="270"
             android:scaleX="5"
-            android:scaleY="9" />
+            android:scaleY="9"
+            android:progressTint="@color/bg"/>
 
         <ProgressBar
             android:id="@+id/progressBar3"
@@ -61,7 +80,8 @@
             android:layout_weight="1"
             android:rotation="270"
             android:scaleX="5"
-            android:scaleY="9" />
+            android:scaleY="9"
+            android:progressTint="@color/bg"/>
 
         <ProgressBar
             android:id="@+id/progressBar4"
@@ -71,7 +91,8 @@
             android:layout_weight="1"
             android:rotation="270"
             android:scaleX="5"
-            android:scaleY="9" />
+            android:scaleY="9"
+            android:progressTint="@color/bg"/>
 
         <ProgressBar
             android:id="@+id/progressBar5"
@@ -81,7 +102,8 @@
             android:layout_weight="1"
             android:rotation="270"
             android:scaleX="5"
-            android:scaleY="9" />
+            android:scaleY="9"
+            android:progressTint="@color/bg"/>
 
         <ProgressBar
             android:id="@+id/progressBar6"
@@ -91,7 +113,8 @@
             android:layout_weight="1"
             android:rotation="270"
             android:scaleX="5"
-            android:scaleY="9" />
+            android:scaleY="9"
+            android:progressTint="@color/bg"/>
 
         <ProgressBar
             android:id="@+id/progressBar7"
@@ -101,7 +124,8 @@
             android:layout_weight="1"
             android:rotation="270"
             android:scaleX="5"
-            android:scaleY="9" />
+            android:scaleY="9"
+            android:progressTint="@color/bg"/>
     </LinearLayout>
 
     <TextView

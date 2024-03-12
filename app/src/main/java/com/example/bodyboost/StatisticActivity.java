@@ -6,28 +6,20 @@ import android.os.Bundle;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class StatisticActivity extends AppCompatActivity {
 
-    private TextView foodTextView, waterTextView, sleepTextView;
+    private static final String PREFS_NAME = "StatisticPrefs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistic);
 
-        // Получение данных из SharedPreferences
-        SharedPreferences sharedPref = getSharedPreferences("my_prefs", Context.MODE_PRIVATE);
-
-        // Пример получения данных из SharedPreferences
-        String totalCaloriesValue = sharedPref.getString("totalCaloriesValue", "");
-        int tvConsumedWater = sharedPref.getInt("tvConsumedWater", 0);
-        String previousSleepDuration = sharedPref.getString("previousSleepDuration", "");
-
-        // Установка текста для foodTextView, waterTextView, sleepTextView
-        foodTextView.setText(totalCaloriesValue);
-        waterTextView.setText(String.valueOf(tvConsumedWater));
-        sleepTextView.setText(previousSleepDuration);
     }
 }
+

@@ -87,8 +87,7 @@ public class ProfileActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
                 if (user != null) {
-                    tvName.setText("Name: " + user.name);
-                    tvEmail.setText("Email: " + user.email);
+                    tvName.setText("Hello! " + user.name);
                 }
             }
 

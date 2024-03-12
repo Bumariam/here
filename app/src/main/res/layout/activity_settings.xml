@@ -8,85 +8,101 @@
     android:background="@color/white"
     tools:context=".SettingsActivity">
 
-    <Button
-        android:id="@+id/deleteDataButton"
-        style="@style/ButtonGreen"
-        android:layout_width="201dp"
-        android:layout_height="45dp"
-        android:backgroundTint="@color/ColumbiaBlue"
-        android:onClick="deleteAllQuestion"
-        android:text="@string/delete_all_data"
-        app:layout_constraintBottom_toTopOf="@+id/changeHeader"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.101" />
 
-    <TextView
-        android:id="@+id/changeHeader"
-        android:layout_width="319dp"
-        android:layout_height="70dp"
-        android:layout_marginBottom="20dp"
-        android:fontFamily="@font/montserratregular"
-        android:text="@string/change_daily_calorie_count"
-        android:textColor="@color/grey"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/newDailyInputLayout"
+    <ImageView
+        android:id="@+id/deleteDataButton"
+        android:layout_width="333dp"
+        android:layout_height="101dp"
+        android:layout_marginBottom="36dp"
+        android:adjustViewBounds="true"
+        android:backgroundTint="@color/ColumbiaBlue"
+        android:fontFamily="@font/montserrat"
+        android:onClick="deleteAllQuestion"
+
+        android:src="@drawable/slideupmoon"
+        android:text="add items"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/newDailyInputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="100dp"
-        android:textColorHint="@color/white"
-        app:hintTextColor="@color/white"
+    <TextView
+        android:id="@+id/titlemoon"
+        android:layout_width="205dp"
+        android:layout_height="32dp"
+        android:text="DELETE ALL DATA"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@id/deleteDataButton"
+        app:layout_constraintEnd_toEndOf="@id/deleteDataButton"
+        app:layout_constraintStart_toStartOf="@id/deleteDataButton"
+        app:layout_constraintTop_toTopOf="@id/deleteDataButton" />
+
+
+    <TextView
+        android:id="@+id/changeHeader"
+        android:layout_width="327dp"
+        android:layout_height="79dp"
+        android:fontFamily="@font/montserratregular"
+        android:text="@string/change_daily_calorie_count"
+        android:textColor="@color/prym_1"
+        android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/saveGoalButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/newDailyGoal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/prym_1"
-            android:fontFamily="@font/montserratregular"
-            android:hint="@string/daily_calories"
-            android:inputType="number"
-            android:max="100"
-            android:singleLine="true"
-            android:textColor="@color/cardwhite"
-            android:textSize="24sp" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:id="@+id/saveGoalButton"
-        style="@style/ButtonGreen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
-        android:backgroundTint="@color/ColumbiaBlue"
-        android:onClick="applyChanges"
-        android:text="@string/apply"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:rippleColor="@color/ColumbiaBlue" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.261" />
 
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="289dp"
-        android:layout_height="138dp"
-        app:layout_constraintBottom_toTopOf="@+id/changeHeader"
+        android:id="@+id/saveGoalButton"
+        android:layout_width="333dp"
+        android:layout_height="101dp"
+        android:layout_marginBottom="112dp"
+        android:adjustViewBounds="true"
+        android:backgroundTint="@color/ColumbiaBlue"
+        android:fontFamily="@font/montserrat"
+        android:onClick="applyChanges"
+
+        android:src="@drawable/slideupmoon"
+        android:text="add items"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/titlemoon1"
+        android:layout_width="90dp"
+        android:layout_height="27dp"
+        android:text="APPLY"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@id/saveGoalButton"
+        app:layout_constraintEnd_toEndOf="@id/saveGoalButton"
+        app:layout_constraintStart_toStartOf="@id/saveGoalButton"
+        app:layout_constraintTop_toTopOf="@id/saveGoalButton" />
+
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/newDailyGoal"
+        android:layout_width="312dp"
+        android:layout_height="79dp"
+        android:layout_marginTop="116dp"
+        android:backgroundTint="@color/prym_1"
+        android:fontFamily="@font/montserratregular"
+        android:hint="@string/daily_calories"
+        android:inputType="number"
+        android:max="100"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/deleteDataButton"
-        app:srcCompat="@drawable/salad" />
+        app:layout_constraintTop_toTopOf="@+id/changeHeader" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
