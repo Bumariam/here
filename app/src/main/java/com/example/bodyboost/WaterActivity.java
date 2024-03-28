@@ -1,5 +1,4 @@
 package com.example.bodyboost;
-
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -8,7 +7,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -23,6 +21,7 @@ public class WaterActivity extends AppCompatActivity {
     private ProgressBar progressBar;
 
     private TextView water;
+    private TextView tvConsumedWater;
     private EditText editTextNumber;
     private TextView textView2;
     private TextView textView3;
@@ -32,30 +31,21 @@ public class WaterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_water);
 
-
-
         sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         progressBar = findViewById(R.id.progressBar);
 
-        int consumedWaterAmount = sharedPreferences.getInt(WATER_AMOUNT_KEY, 0);
-        updateUI(consumedWaterAmount);
+        // Инициализация прогресс-бара с начальным значением
+        int waterAmount = sharedPreferences.getInt(WATER_AMOUNT_KEY, 0);
+        updateWaterAmountAndSave(waterAmount);
 
-        ImageView buttonAddWater = findViewById(R.id.buttonAddWater);
-        buttonAddWater.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showWaterAmountDialog();
-            }
-        });
-
-
-        // Инициализируем элементы интерфейса
+        // Инициализация элементов интерфейса
         water = findViewById(R.id.water);
+        tvConsumedWater = findViewById(R.id.tvConsumedWater);
         editTextNumber = findViewById(R.id.editTextNumber);
         textView2 = findViewById(R.id.textView2);
         textView3 = findViewById(R.id.textView3);
 
-        // Устанавливаем обработчики событий на textView2 (добавление) и textView3 (вычитание)
+        // Установка обработчиков событий на textView2 (добавление) и textView3 (вычитание)
         textView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,6 +59,10 @@ public class WaterActivity extends AppCompatActivity {
                 subtractWater();
             }
         });
+
+        // Обновление tvConsumedWater при загрузке активности
+        int consumedWaterAmount = sharedPreferences.getInt(WATER_AMOUNT_KEY, 0);
+        tvConsumedWater.setText("Amount: " + consumedWaterAmount + "ml");
     }
 
     // Метод для добавления воды
@@ -76,9 +70,13 @@ public class WaterActivity extends AppCompatActivity {
         String value = editTextNumber.getText().toString();
         if (!value.isEmpty()) {
             int amountToAdd = Integer.parseInt(value);
-            int currentAmount = getCurrentWaterAmount();
+            int currentAmount = sharedPreferences.getInt(WATER_AMOUNT_KEY, 0);
             int newAmount = currentAmount + amountToAdd;
             water.setText(String.valueOf(newAmount));
+            tvConsumedWater.setText("Amount: " + newAmount + "ml");
+
+            // Обновление прогресса и сохранение данных
+            updateWaterAmountAndSave(newAmount);
         }
     }
 
@@ -87,22 +85,22 @@ public class WaterActivity extends AppCompatActivity {
         String value = editTextNumber.getText().toString();
         if (!value.isEmpty()) {
             int amountToSubtract = Integer.parseInt(value);
-            int currentAmount = getCurrentWaterAmount();
+            int currentAmount = sharedPreferences.getInt(WATER_AMOUNT_KEY, 0);
             int newAmount = currentAmount - amountToSubtract;
             if (newAmount < 0) {
                 newAmount = 0; // чтобы избежать отрицательных значений
             }
             water.setText(String.valueOf(newAmount));
+            tvConsumedWater.setText("Amount: " + newAmount + "ml");
+
+            // Обновление прогресса и сохранение данных
+            updateWaterAmountAndSave(newAmount);
         }
     }
 
     // Метод для получения текущего количества воды
     private int getCurrentWaterAmount() {
-        String currentValue = water.getText().toString();
-        if (!currentValue.isEmpty()) {
-            return Integer.parseInt(currentValue);
-        }
-        return 0;
+        return sharedPreferences.getInt(WATER_AMOUNT_KEY, 0);
     }
 
     private void showWaterAmountDialog() {
@@ -127,12 +125,14 @@ public class WaterActivity extends AppCompatActivity {
                     break;
             }
             int updatedWaterAmount = sharedPreferences.getInt(WATER_AMOUNT_KEY, 0) + amount;
-            updateWaterAmount(updatedWaterAmount);
+
+            updateWaterAmountAndSave(updatedWaterAmount);
         });
         builder.show();
     }
 
-    private void updateWaterAmount(int waterAmount) {
+    private void updateWaterAmountAndSave(int waterAmount) {
+        // Сохранение данных в SharedPreferences
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt(WATER_AMOUNT_KEY, waterAmount);
         editor.apply();
@@ -151,18 +151,16 @@ public class WaterActivity extends AppCompatActivity {
         int percentage = (int) ((waterAmount / (float) DAILY_GOAL) * 100);
 
         TextView textViewPercentage = findViewById(R.id.textViewPercentage);
-        TextView textViewAmount = findViewById(R.id.tvConsumedWater);
 
         textViewPercentage.setText(percentage + "%");
-        textViewAmount.setText("Amount: " + waterAmount + "ml");
 
         // Обновление прогресса ProgressBar
         progressBar.setProgress(percentage);
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.water_menu,menu);
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.water_menu, menu);
         return true;
     }
 
@@ -181,7 +179,9 @@ public class WaterActivity extends AppCompatActivity {
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // Обнуление данных
-                        updateWaterAmount(0);
+                        updateWaterAmountAndSave(0);
+                        water.setText("0");
+                        tvConsumedWater.setText("Amount: 0 ml");
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -193,4 +193,16 @@ public class WaterActivity extends AppCompatActivity {
         // Создание диалогового окна и его отображение
         builder.create().show();
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // Сохранение данных перед выходом из активности
+        int waterAmount = sharedPreferences.getInt(WATER_AMOUNT_KEY, 0);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(WATER_AMOUNT_KEY, waterAmount);
+        editor.apply();
+    }
 }
+
+

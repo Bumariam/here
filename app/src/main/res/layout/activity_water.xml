@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
+    android:background="@color/white"
     tools:context=".WaterActivity">
 
     <TextView
@@ -13,11 +14,10 @@
         android:layout_marginTop="1dp"
         android:text="Amount: 0ml"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonAddWater"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewDailyGoal"
-        app:layout_constraintVertical_bias="0.087" />
+        app:layout_constraintTop_toBottomOf="@id/textViewDailyGoal" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -67,45 +67,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:textSize="24sp"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textViewDailyGoal" />
 
-    <ImageView
-        android:id="@+id/buttonAddWater"
-        android:layout_width="333dp"
-        android:layout_height="101dp"
-        android:layout_marginTop="84dp"
-        android:adjustViewBounds="true"
-        android:src="@drawable/slideupmoon"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/water"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/titlemoon"
-        android:layout_width="141dp"
-        android:layout_height="30dp"
-        android:text="ADD WATER"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@id/buttonAddWater"
-        app:layout_constraintEnd_toEndOf="@id/buttonAddWater"
-        app:layout_constraintStart_toStartOf="@id/buttonAddWater"
-        app:layout_constraintTop_toTopOf="@id/buttonAddWater" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
-
-
-
+        app:layout_constraintGuide_end="349dp" />
 
     <EditText
         android:id="@+id/editTextNumber"
@@ -113,43 +86,36 @@
         android:layout_height="57dp"
         android:ems="10"
         android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/buttonAddWater"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvConsumedWater" />
+        app:layout_constraintTop_toBottomOf="@id/tvConsumedWater"
+        app:layout_constraintVertical_bias="0.154" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="449dp"
         android:text="+"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/black"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonAddWater"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextNumber"
         app:layout_constraintEnd_toStartOf="@+id/editTextNumber"
-        app:layout_constraintHorizontal_bias="0.628"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/progressBar"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="@+id/editTextNumber" />
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="21dp"
-        android:layout_height="29dp"
-        android:layout_marginTop="442dp"
-        android:layout_marginEnd="68dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="-"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/black"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonAddWater"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextNumber"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.688"
         app:layout_constraintStart_toEndOf="@+id/editTextNumber"
-        app:layout_constraintTop_toTopOf="@+id/progressBar"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@+id/editTextNumber" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
