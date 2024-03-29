@@ -14,7 +14,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_name">
+        app:layout_constraintTop_toTopOf="@+id/tv_name"
+        tools:ignore="NotSibling">
 
         <TextView
             android:id="@+id/tv_email1"

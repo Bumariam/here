@@ -37,6 +37,9 @@ public class ProfileActivity extends AppCompatActivity {
         tvEmail = findViewById(R.id.tv_email1);
         tvWaterAmount = findViewById(R.id.water_prof);
 
+
+
+
         SharedData sharedData = SharedData.getInstance();
 
         // Получаем значение totalCalories из разделяемого класса
